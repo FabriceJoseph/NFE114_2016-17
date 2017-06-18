@@ -1,0 +1,208 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.invalide {
+    background-color: red;
+}
+
+/**********************navbar****************************/
+
+#navbar {
+    position: fixed;
+    z-index: 100;
+    background-color: lightskyblue;
+    border: 1px solid black;
+    width: 100%;
+    height: 50px;
+}
+
+#navbar_wrapper {
+    position: relative;
+    top: 10px;
+}
+
+#navbar ul li {
+    display: inline-block;  
+}
+
+/**********************navbar****************************/
+
+
+/*****************home_button_wrapper********************/
+
+#home_button_wrapper {
+    position: relative;
+    left: 20px;
+    margin-right: 500px;
+}
+
+#home_button {
+    width: 65px;
+}
+
+.homeImage {
+    width: 30px;
+}
+
+
+/*****************home_button_wrapper********************/
+
+
+/******************connexion_wrapper**********************/
+
+#connexion_wrapper {
+    position: relative;
+   
+    /*left: 700px;*/    
+}
+
+#connexion {
+    display: none;
+    position: absolute;
+    /*z-index: 900;*/
+    padding-top: 15px;
+    width: 350px;
+    top: 34px;
+    left: -283px;
+    box-sizing: border-box;
+    border: 1px solid grey;
+    background-color: lightgrey;
+}
+
+
+/*********images***********/
+
+#avatar {
+    position: relative;
+    width: 65px; 
+    border: 1px solid grey;
+    background-color: lightgrey;
+    border-radius: 2px;
+    z-index: 1000;
+}
+
+#avatar:hover {
+    cursor: pointer;
+}
+
+
+.avatarImage {
+    width: 30px;
+    height: 30px;
+}
+
+.arrow {
+    width: 25px;
+    height: 25px;
+}
+/*******images*************/
+
+
+/*********forms*************/
+
+#createButton {
+    position: relative;
+    top: -30px;
+    left: 200px;
+}
+
+#registerForm_wrapper {
+    display: none;
+    /*width: 300px;*/
+}
+
+#authentificationForm_wrapper, #registerForm_wrapper {
+    position: relative;
+}
+
+#registerForm input[type="submit"] {
+    position: relative;
+    left: 120px;    
+}
+
+#authentificationForm label {
+    display: inline-block;
+    width: 140px;
+    font-size: 0.8em;
+}
+
+#registerForm label {
+    display: inline-block;
+    width: 150px;
+    font-size: 0.8em;
+}
+
+#registerForm input[type="text"], input[type="password"] {
+    width: 150px;
+    font-size: 0.9em;
+}
+
+#authentificationForm input[type="text"], input[type="password"] {
+    width: 150px;
+    font-size: 0.9em;
+}
+
+#authentificationForm input[type="submit"] {
+    position: relative;
+    left: 50px;
+}
+
+.error {
+    display: inline;
+    color: red;
+    font-size: 0.9em;
+}
+
+.invisible {
+    display: none;
+}
+
+.visibleInLine {
+    display: inline;
+}
+
+/*********forms*************/
+
+/******************connexion_wrapper**********************/
+
+/******************search icon****************************/
+
+#search_icon {
+    position : relative;
+}
+
+#search_icon img {
+    width: 30px;
+    height: 30px;
+}
+
+#search_icon:hover {
+    cursor: pointer;
+}
+
+#search_wrapper {
+    position: absolute;
+    border: 1px solid grey;
+    background-color: lightgrey;
+    display: none;
+}
+
+
+
+#search_wrapper input[type="radio"], input[type="range"] {
+    vertical-align: middle;
+}
+
+#search_wrapper label {
+    font-size: 0.6em;
+    vertical-align: middle; 
+}
+
+
+/******************search icon****************************/
+
+
+
+
