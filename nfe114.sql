@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 17, 2017 at 11:01 
--- Server version: 10.1.11-MariaDB
--- PHP Version: 7.0.3
+-- Generation Time: Jun 18, 2017 at 06:16 
+-- Server version: 10.1.9-MariaDB
+-- PHP Version: 5.6.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -23,6 +23,26 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `Affiche`
+--
+
+CREATE TABLE `Affiche` (
+  `idLieu` int(11) NOT NULL,
+  `idSpectacle` int(11) NOT NULL,
+  `dateDebut` date NOT NULL,
+  `dateFin` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+--
+-- Dumping data for table `Affiche`
+--
+
+INSERT INTO `Affiche` (`idLieu`, `idSpectacle`, `dateDebut`, `dateFin`) VALUES
+(1, 2, '2017-06-01', '2017-07-01');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `Artiste`
 --
 
@@ -32,6 +52,15 @@ CREATE TABLE `Artiste` (
   `nom` varchar(255) NOT NULL,
   `prenom` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Artiste`
+--
+
+INSERT INTO `Artiste` (`idArtiste`, `civilite`, `nom`, `prenom`) VALUES
+(1, '0', 'DE TONQUEDEC', 'GUILLAUME'),
+(2, '1', 'KEIM', 'CLAIRE'),
+(3, '0', 'PAUL', 'JOSE');
 
 -- --------------------------------------------------------
 
@@ -53,6 +82,28 @@ INSERT INTO `Categorie` (`idCategorie`, `nom`) VALUES
 (2, 'categorie2'),
 (3, 'categorie3'),
 (4, 'categorie4');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `Distribution`
+--
+
+CREATE TABLE `Distribution` (
+  `idSpectacle` int(11) NOT NULL,
+  `idArtiste` int(11) NOT NULL,
+  `fonction` enum('mes','auteur','acteur','') CHARACTER SET utf8 NOT NULL,
+  `role` text CHARACTER SET utf8 NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_mysql500_ci;
+
+--
+-- Dumping data for table `Distribution`
+--
+
+INSERT INTO `Distribution` (`idSpectacle`, `idArtiste`, `fonction`, `role`) VALUES
+(2, 1, 'acteur', 'Le mari'),
+(2, 2, 'acteur', 'La femme'),
+(2, 3, 'mes', '');
 
 -- --------------------------------------------------------
 
@@ -134,10 +185,12 @@ CREATE TABLE `Place` (
 --
 
 INSERT INTO `Place` (`idRepresentation`, `idCategorie`, `capacite`, `placeDispo`, `prix`) VALUES
-(1, 1, 250, 250, 15),
-(1, 2, 150, 150, 22),
+(1, 1, 250, 200, 15),
+(1, 2, 150, 100, 22),
 (1, 3, 100, 100, 35),
-(1, 4, 50, 50, 41);
+(1, 4, 50, 20, 41),
+(2, 1, 250, 100, 15),
+(2, 2, 150, 50, 22);
 
 -- --------------------------------------------------------
 
@@ -255,6 +308,7 @@ CREATE TABLE `Spectacle` (
   `nom` varchar(255) NOT NULL,
   `idProducteur` int(11) NOT NULL,
   `idGenre` int(11) NOT NULL,
+  `idDistribution` int(11) NOT NULL,
   `description` text NOT NULL,
   `dateDebut` date NOT NULL,
   `dateFin` date NOT NULL,
@@ -265,10 +319,10 @@ CREATE TABLE `Spectacle` (
 -- Dumping data for table `Spectacle`
 --
 
-INSERT INTO `Spectacle` (`id`, `nom`, `idProducteur`, `idGenre`, `description`, `dateDebut`, `dateFin`, `status`) VALUES
-(1, 'Le Comte De Bouderbala ', 0, 1, '', '2017-06-13', '2017-07-04', '1'),
-(2, 'La Garçonniere', 0, 1, 'Nous sommes dans l’Amérique des années 50, celle des grattes ciel et du rêve américain triomphant. Monsieur Baxter, un « petit employé de bureau » dans une importante compagnie d’assurances new yorkaise, prête régulièrement son appartement à ses supérieurs hiérarchiques qui s’en servent comme garçonnière. En échange, ils lui promettent une promotion qui n’arrive jamais. M. Sheldrake, le grand patron, s’aperçoit du manège. Il demande à Baxter de lui  prêter l’appartement pour y emmener sa maîtresse, mais il exige d’être dorénavant le seul à en profiter. Shelkdrake est un mari et un père respectable, il a besoin de discrétion. Baxter accepte, il monte en grade de façon spectaculaire. Mais lorsque Baxter comprend que Sheldrake y emmène celle qu’il aime, mademoiselle Novak, Baxter est face à un dilemme : renoncer à son amour, ou à sa carrière.', '2017-06-01', '2017-07-01', '1'),
-(3, 'Napoleon', 0, 2, '', '2017-06-09', '2017-07-01', '1');
+INSERT INTO `Spectacle` (`id`, `nom`, `idProducteur`, `idGenre`, `idDistribution`, `description`, `dateDebut`, `dateFin`, `status`) VALUES
+(1, 'Le Comte De Bouderbala ', 0, 1, 0, '', '2017-06-13', '2017-07-04', '1'),
+(2, 'La Garçonniere', 0, 1, 2, 'Nous sommes dans l’Amérique des années 50, celle des grattes ciel et du rêve américain triomphant. Monsieur Baxter, un « petit employé de bureau » dans une importante compagnie d’assurances new yorkaise, prête régulièrement son appartement à ses supérieurs hiérarchiques qui s’en servent comme garçonnière. En échange, ils lui promettent une promotion qui n’arrive jamais. M. Sheldrake, le grand patron, s’aperçoit du manège. Il demande à Baxter de lui  prêter l’appartement pour y emmener sa maîtresse, mais il exige d’être dorénavant le seul à en profiter. Shelkdrake est un mari et un père respectable, il a besoin de discrétion. Baxter accepte, il monte en grade de façon spectaculaire. Mais lorsque Baxter comprend que Sheldrake y emmène celle qu’il aime, mademoiselle Novak, Baxter est face à un dilemme : renoncer à son amour, ou à sa carrière.', '2017-06-01', '2017-07-01', '1'),
+(3, 'Napoleon', 0, 2, 0, '', '2017-06-09', '2017-07-01', '1');
 
 -- --------------------------------------------------------
 
@@ -293,13 +347,19 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`idClient`, `mail`, `pass`, `civilite`, `nom`, `prenom`, `genreFavori`, `adresse`, `telephone`) VALUES
-(1, 'julien@hotmail.fr', '123456', '1', '', '', '', '', ''),
+(1, 'julien@hotmail.fr', '12345678', '1', '', '', '', '', ''),
 (2, 'mathieu@hotmail.fr', '12345678', '1', '', '', '', '', ''),
 (3, 'julienbernardi@hotmail.fr', 'ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f', '1', '', '', '', '', '');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `Affiche`
+--
+ALTER TABLE `Affiche`
+  ADD PRIMARY KEY (`idLieu`,`idSpectacle`);
 
 --
 -- Indexes for table `Artiste`
@@ -312,6 +372,12 @@ ALTER TABLE `Artiste`
 --
 ALTER TABLE `Categorie`
   ADD PRIMARY KEY (`idCategorie`);
+
+--
+-- Indexes for table `Distribution`
+--
+ALTER TABLE `Distribution`
+  ADD PRIMARY KEY (`idArtiste`,`idSpectacle`);
 
 --
 -- Indexes for table `Genre`
@@ -393,7 +459,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `Artiste`
 --
 ALTER TABLE `Artiste`
-  MODIFY `idArtiste` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idArtiste` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `Categorie`
 --
@@ -429,6 +495,18 @@ ALTER TABLE `Spectacle`
 --
 ALTER TABLE `user`
   MODIFY `idClient` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `Distribution`
+--
+ALTER TABLE `Distribution`
+  ADD CONSTRAINT `Distribution_ibfk_1` FOREIGN KEY (`idArtiste`) REFERENCES `Artiste` (`idArtiste`),
+  ADD CONSTRAINT `Distribution_ibfk_2` FOREIGN KEY (`idArtiste`) REFERENCES `Artiste` (`idArtiste`),
+  ADD CONSTRAINT `Distribution_ibfk_3` FOREIGN KEY (`idArtiste`) REFERENCES `Artiste` (`idArtiste`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
