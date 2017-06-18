@@ -83,7 +83,7 @@ class Representation {
         $this->idLieu = $a8;
     }
 
-
+    
 /**************************Constructors****************************/
 
 /**************debut  getters and setters*****************************/

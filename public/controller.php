@@ -9,7 +9,7 @@
         echo 'je suis pas vide';
         echo $_POST['searchCritera'];
     }
-    echo $_POST['searchBoxContent'];
+    //echo $_POST['searchBoxContent'];
 
 //si l'utilisateur effectue une recherche ou à appuyer sur le bouton 'en savoir plus'
     if(!empty($_POST['searchBoxContent']) || !empty($_POST['detail'])) {
@@ -30,7 +30,7 @@
                     addIllustrationToSpectacle($result);
                     $resultSer = serialize($result);
 
-                    $url = 'http://localhost/nfe114fab/public/view/prog.php';
+                    $url = URL.'public/view/prog.php';
                     $fields = array(
                         'result' => $resultSer,
                         'session' =>$_SESSION
@@ -52,7 +52,7 @@
 
         // si l'utilisateur a appuyé sur le bouton 'en savoir plus'
         } else if(empty($_POST['searchBoxContent']) && !empty($_POST['detail'])) {
-
+		
             $idSpectacle = htmlspecialchars($_POST['idSpectacle']);
             $result = getSpectacleById($idSpectacle);
 
@@ -62,7 +62,8 @@
                 $resultSer = serialize($result);
 
 
-                $url = 'http://localhost/nfe114fab/public/view/prog.php';
+               // $url = URL.'public/view/prog.php';
+                $url = 'http://nfe114.localhost/nfe114/public/view/prog.php';
                     $fields = array(
                         'result' => $resultSer,
                         'session' =>$_SESSION

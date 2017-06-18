@@ -14,6 +14,7 @@ public $dateDebut;
 public $dateFin;
 public $status;
 public $illustration;
+public $distribution;
 
 /*******************Constructors********************************/
 
@@ -89,6 +90,19 @@ public function __construct8($a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8) {
     $this->idSpectacle = $a8;
 }
 
+public function __construct9($a1, $a2, $a3, $a4, $a5, $a6, $a7, $a8,$a9) {
+    $this->nom = $a1;
+    $this->status = $a2;
+    $this->idProducteur = $a3;
+    $this->dateDebut = $a4;
+    $this->genre = $a5;
+    $this->dateFin = $a6;
+    $this->description = $a7;
+    $this->idSpectacle = $a8;
+    $this->distribution=$a9;
+}
+
+ 
 
 /*******************Constructors********************************/
 

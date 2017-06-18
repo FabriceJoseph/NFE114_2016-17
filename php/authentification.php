@@ -12,14 +12,14 @@
         if(userExists($login)) {
             if(validUser($login, $pass)) {
                 $_SESSION['u'] = 2000;
-                header('Location: http://localhost/nfe114fab/index.php?error=0');
+                header('Location: '.URL.'index.php?error=0');
                 exit();
             } else {
-                header('Location: http://localhost/nfe114fab/index.php?error=1');
+                header('Location: '.URL.'index.php?error=1');
                 exit();
             }
         } else {
-            header('Location: http://localhost/nfe114fab/index.php?error=2');
+            header('Location: '.URL.'index.php?error=2');
             exit();
         }
         
@@ -84,12 +84,12 @@
         $stmt->execute(array(':mail'=>$mail, ':pass'=>$passH));
         if($stmt) {
             //echo 'ok';
-            header('Location: http://localhost/nfe114fab/index.php?error=0');
+            header('Location: '.URL.'index.php?error=0');
             exit();
             //return true;
         } else {
             //echo 'pas ok';
-            header('Location: http://localhost/nfe114fab/index.php?error=3');
+            header('Location: '.URL.'index.php?error=3');
             exit();
             //return false;
         } 

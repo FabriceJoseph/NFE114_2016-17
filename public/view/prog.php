@@ -24,11 +24,11 @@
 <html>
     <head>
         <meta charset='utf-8'/>
-        <link rel="stylesheet" href="http://localhost/nfe114fab/css/index.css" />
-        <link rel="stylesheet" href="http://localhost/nfe114fab/css/catalogue.css" />
-        <script type="text/javascript" src="http://localhost/nfe114fab/js/jquery/jquery-3.2.0.js"></script>
-        <script type="text/javascript" src="http://localhost/nfe114fab/js/main.js"></script>
-        <script type="text/javascript" src="http://localhost/nfe114fab/js/authentification.js"></script>
+        <link rel="stylesheet" href="../css/index.css" />
+        <link rel="stylesheet" href="../css/catalogue.css" />
+        <script type="text/javascript" src="../../js/jquery/jquery-3.2.0.js"></script>
+        <script type="text/javascript" src="../../js/main.js"></script>
+        <script type="text/javascript" src="../../js/authentification.js"></script>
         <title>Programmes</title>
 
         <style>
@@ -88,7 +88,8 @@
                         echo "<div class='spectacleContainer'>";
                         displayOne($spec);
                         $representations = getRepresentations($spec);
-                        createTableRep($representations);
+                        createSelectRep($representations);
+                        //createTableRep($representations);
                         echo "</div>";
                     }
                 }

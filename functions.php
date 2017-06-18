@@ -1,10 +1,12 @@
+<!--
 <?php
 
     require_once 'php/connexion.php';
     require_once 'model/Spectacle.php';
     require_once 'model/Representation.php';
     require_once 'constante.php';
-
+    require_once 'model/Distribution.php';
+	require_once 'model/Affiche.php';
 
 
 // retrourne les spectacles en cours pour un internaute lambda
@@ -147,10 +149,17 @@
 //wrapp un spectacle
 
 	function displayOne($spectacle){
+		include_once 'func_fiche_spectacle.php';
 		echo "<div class='spectacle'>";
 		echo "<figure><img alt='' title='".$spectacle->getNom()."' src='".ROOT.$spectacle->getIllustration()."'/></figure>";
         echo "<figcaption>".$spectacle->getNom()."</figcaption>";
-        //echo "<figcaption>".$spectacle->getDescription()."</figcaption>";
+        echo "<p>Résumé :</p>";
+        echo "<p>".$spectacle->getDescription()."</p>";
+       // echo "<p></p><span>Lieu :</span>";
+        //echo "<span>".$spectacle->getSalle()."</span></p>";
+        echo "<p>Distribution :</p>";
+        displayDistribution($spectacle);
+        displayLieux_Dates($spectacle);
 		echo "</div>";
 	}
 
@@ -214,7 +223,7 @@
         $resultatString = '';
         $resultat = [];
         while($res = $statement->fetchObject()) {
-            $spectacle = new Spectacle($res->nom, $res->status, $res->idProducteur, $res->dateDebut, $res->idGenre, $res->dateFin, $res->description, $res->id);
+            $spectacle = new Spectacle($res->nom, $res->status, $res->idProducteur, $res->dateDebut, $res->idGenre, $res->dateFin, $res->description, $res->id,$res->idDistribution);
             array_push($resultat, $spectacle);
         }
 
@@ -222,7 +231,7 @@
         return $resultat;
     }
     
-    
+  /**  
     //retourne les réprésentations pour un spectacle 
     
     function getRepresentations($spectacle){
@@ -255,8 +264,8 @@
 		//echo "<table class=representations>";
         echo "<table>";
 		echo "<tr><th></th><th></th></tr>";
-        createRow("Résumé", $spectacle->getDescription());
-        createRow("Distribution", "rien pour l'instant");
+        //createRow("Résumé", $spectacle->getDescription());
+        //createRow("Distribution", "rien pour l'instant");
         createRow("Lieu", $representations[0]->getIdLieu());//pas tout a fait vrai si les representations ne sont pas toutes au meme endroit
         createRow("Salle", $representations[0]->getSalle()); //pas tout a fait vrai si les representations ne sont pas toutes au meme endroit
 			foreach($representations as $representation){
@@ -293,7 +302,7 @@
         }
         return $resultat;
     }
-
+**/
 
 //effectue une recherche suivant les parametres fournis
     function find($searchBoxContent, $searchCritera) {
@@ -316,5 +325,8 @@
         }
 
     }
+    
+
 
 ?>
+-->

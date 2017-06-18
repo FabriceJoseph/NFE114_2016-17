@@ -2,10 +2,12 @@
 
     session_start();
 
+	require_once 'constante.php';
+
     session_destroy();
     unset($_SESSION['u']);
 
-    header("Location: http://localhost/nfe114fab/index.php");
+    header("Location: ".URL."index.php");
     exit();
 
 

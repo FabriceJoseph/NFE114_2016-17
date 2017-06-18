@@ -3,8 +3,8 @@
 class connexion {
 
     private static $user = 'root';
-    private static $pass = 'Misternice1@';
-    //private static $pass = '';
+    //julien :private static $pass = 'Misternice1@';
+    private static $pass = '';
     private static $db = 'mysql:host=localhost;dbname=nfe114';
 
     public static function getInstance() {

@@ -9,9 +9,7 @@ define('ROOT_URL', substr($_SERVER['PHP_SELF'], 0, - (strlen($_SERVER['SCRIPT_FI
 
 define('ROOT', '/nfe114/');
 //define('ROOT', $_SERVER['DOCUMENT_ROOT'].'/nfe114fab/');
-
-//fab
-define('URL','hhttp://nfe114.localhost/nfe114/');
+ 
 
 
 ?>
